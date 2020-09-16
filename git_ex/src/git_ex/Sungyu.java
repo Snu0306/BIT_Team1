@@ -14,5 +14,7 @@ A,B,C 는 콘솔창에서 입력받는다~
 
 
 public class Sungyu {
-
+	public static void main(String[] args) {
+		System.out.println("Fork 완료");
+	}
 }
