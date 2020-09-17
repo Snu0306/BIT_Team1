@@ -15,5 +15,6 @@ A,B,C �뒗 肄섏넄李쎌뿉�꽌 �엯�젰諛쏅뒗�떎~
 public class Chaeyeon {
 	public static void main(String[] args) {
 		System.out.println("Fork 완료");
+		System.out.println("branch만들기");
 	}
 }
