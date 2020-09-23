@@ -1,17 +1,47 @@
 package git_ex;
 
-/* <ë°±ì¤€ ì†ìµë¶„ê¸°ì >
-ì›”ë“œì „ìžëŠ” ë…¸íŠ¸ë¶ì„ ì œì¡°í•˜ê³  íŒë§¤í•˜ëŠ” íšŒì‚¬ì´ë‹¤. ë…¸íŠ¸ë¶ íŒë§¤ ëŒ€ìˆ˜ì— ìƒê´€ì—†ì´ ë§¤ë…„ ìž„ëŒ€ë£Œ, ìž¬ì‚°ì„¸, ë³´í—˜ë£Œ, ê¸‰ì—¬ ë“± Aë§Œì›ì˜ ê³ ì • ë¹„ìš©ì´ ë“¤ë©°, í•œ ëŒ€ì˜ ë…¸íŠ¸ë¶ì„ ìƒì‚°í•˜ëŠ” ë°ì—ëŠ” ìž¬ë£Œë¹„ì™€ ì¸ê±´ë¹„ ë“± ì´ Bë§Œì›ì˜ ê°€ë³€ ë¹„ìš©ì´ ë“ ë‹¤ê³  í•œë‹¤.
+import java.util.Scanner;
 
-ì˜ˆë¥¼ ë“¤ì–´ A=1,000, B=70ì´ë¼ê³  í•˜ìž. ì´ ê²½ìš° ë…¸íŠ¸ë¶ì„ í•œ ëŒ€ ìƒì‚°í•˜ëŠ” ë°ëŠ” ì´ 1,070ë§Œì›ì´ ë“¤ë©°, ì—´ ëŒ€ ìƒì‚°í•˜ëŠ” ë°ëŠ” ì´ 1,700ë§Œì›ì´ ë“ ë‹¤.
+/* <¹éÁØ ¼ÕÀÍºÐ±âÁ¡>
+¿ùµåÀüÀÚ´Â ³ëÆ®ºÏÀ» Á¦Á¶ÇÏ°í ÆÇ¸ÅÇÏ´Â È¸»çÀÌ´Ù. ³ëÆ®ºÏ ÆÇ¸Å ´ë¼ö¿¡ »ó°ü¾øÀÌ ¸Å³â ÀÓ´ë·á, Àç»ê¼¼, º¸Çè·á, ±Þ¿© µî A¸¸¿øÀÇ °íÁ¤ ºñ¿ëÀÌ µé¸ç, 
+ÇÑ ´ëÀÇ ³ëÆ®ºÏÀ» »ý»êÇÏ´Â µ¥¿¡´Â Àç·áºñ¿Í ÀÎ°Çºñ µî ÃÑ B¸¸¿øÀÇ °¡º¯ ºñ¿ëÀÌ µç´Ù°í ÇÑ´Ù.
 
-ë…¸íŠ¸ë¶ ê°€ê²©ì´ Cë§Œì›ìœ¼ë¡œ ì±…ì •ë˜ì—ˆë‹¤ê³  í•œë‹¤. ì¼ë°˜ì ìœ¼ë¡œ ìƒì‚° ëŒ€ìˆ˜ë¥¼ ëŠ˜ë ¤ ê°€ë‹¤ ë³´ë©´ ì–´ëŠ ìˆœê°„ ì´ ìˆ˜ìž…(íŒë§¤ë¹„ìš©)ì´ ì´ ë¹„ìš©(=ê³ ì •ë¹„ìš©+ê°€ë³€ë¹„ìš©)ë³´ë‹¤ ë§Žì•„ì§€ê²Œ ëœë‹¤. ìµœì´ˆë¡œ ì´ ìˆ˜ìž…ì´ ì´ ë¹„ìš©ë³´ë‹¤ ë§Žì•„ì ¸ ì´ìµì´ ë°œìƒí•˜ëŠ” ì§€ì ì„ ì†ìµë¶„ê¸°ì (BREAK-EVEN POINT)ì´ë¼ê³  í•œë‹¤.
+¿¹¸¦ µé¾î A=1,000, B=70ÀÌ¶ó°í ÇÏÀÚ. ÀÌ °æ¿ì ³ëÆ®ºÏÀ» ÇÑ ´ë »ý»êÇÏ´Â µ¥´Â ÃÑ 1,070¸¸¿øÀÌ µé¸ç, ¿­ ´ë »ý»êÇÏ´Â µ¥´Â ÃÑ 1,700¸¸¿øÀÌ µç´Ù.
 
-A, B, Cê°€ ì£¼ì–´ì¡Œì„ ë•Œ, ì†ìµë¶„ê¸°ì ì„ êµ¬í•˜ëŠ” í”„ë¡œê·¸ëž¨ì„ ìž‘ì„±í•˜ì‹œì˜¤. 
+³ëÆ®ºÏ °¡°ÝÀÌ C¸¸¿øÀ¸·Î Ã¥Á¤µÇ¾ú´Ù°í ÇÑ´Ù. 
+ÀÏ¹ÝÀûÀ¸·Î »ý»ê ´ë¼ö¸¦ ´Ã·Á °¡´Ù º¸¸é ¾î´À ¼ø°£ ÃÑ ¼öÀÔ(ÆÇ¸Åºñ¿ë)ÀÌ ÃÑ ºñ¿ë(=°íÁ¤ºñ¿ë+°¡º¯ºñ¿ë)º¸´Ù ¸¹¾ÆÁö°Ô µÈ´Ù. 
+ÃÖÃÊ·Î ÃÑ ¼öÀÔÀÌ ÃÑ ºñ¿ëº¸´Ù ¸¹¾ÆÁ® ÀÌÀÍÀÌ ¹ß»ýÇÏ´Â ÁöÁ¡À» ¼ÕÀÍºÐ±âÁ¡(BREAK-EVEN POINT)ÀÌ¶ó°í ÇÑ´Ù.
 
-A,B,C ëŠ” ì½˜ì†”ì°½ì—ì„œ ìž…ë ¥ë°›ëŠ”ë‹¤~
+A, B, C°¡ ÁÖ¾îÁ³À» ¶§, ¼ÕÀÍºÐ±âÁ¡À» ±¸ÇÏ´Â ÇÁ·Î±×·¥À» ÀÛ¼ºÇÏ½Ã¿À. 
+
+A,B,C ´Â ÄÜ¼ÖÃ¢¿¡¼­ ÀÔ·Â¹Þ´Â´Ù~
  */
 
 public class Jiyeon {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
 
+		// a = °íÁ¤ºñ¿ë, b=°¡º¯ºñ¿ë, c=³ëÆ®ºÏ °¡°Ý
+		// ÇÑ´ë´ç ++totalSales 
+		// ÃÑ¼öÀÔ(ÆÇ¸Å´ë¼ö*³ëÆ®ºÏ°¡°Ý) >= ÃÑºñ¿ë(°íÁ¤+°¡º¯*´ë¼ö) == break-even point
+		System.out.println("FIXED COST/VARIABLE EXPENSES/LAPTOP PRICE");
+		String str = sc.nextLine();
+		String[] values = str.split("/");
+
+		int a = Integer.parseInt(values[0]);
+		int b = Integer.parseInt(values[1]);
+		int c = Integer.parseInt(values[2]);
+
+		int numberOfSales = 0;
+
+		if (c > b) { //°¡º¯ºñ¿ëÀÌ ³ëÆ®ºÏ °¡°Ýº¸´Ù Å©¸é ¾ÖÃÊ¿¡ ¼ÕÀÍ ºÐ±âÁ¡ Á¸Àç ¤¤¤¤ 
+			do {//ÀÏ´Ü ÆÇ¸Å 
+				++numberOfSales;
+			} while ((numberOfSales * c) <= (a + (b* numberOfSales))); //ÃÑºñ¿ëÀÌ ÃÑ¼öÀÔº¸´Ù ¸¹°Å³ª °°À» ¶§ ±îÁö 
+			System.out.println("BREAK-EVEN-POINT>>\nWHEN NUMBER OF SALES IS "+numberOfSales);
+			}
+		else {
+			System.out.println("-1");
+		}
+	}
 }
